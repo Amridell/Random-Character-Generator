@@ -38,7 +38,7 @@ Array.prototype.swap = function (x,y) {
 //Databases
 var fnames = ["Emily", "Isabelle", "Samantha", "Alice", "Jessica", "Mary", "Kristen", "Kirsten", "Taylor"];
 var mnames = ["William", "Finn", "Luke", "Robert", "Max", "Matthew", "Chandler", "Joseph", "Stephen", "Kenneth", "Christian", "Mason", "James", "Theodore", "Franklin", "Nicholas"];
-var surnames = ["Carter", "Taylor", "Grant", "Knight", "Shaw", "Mason", "Mann", "Burnett", "Kingsolver", "Nailo", "Chandlerson", "Kenson", "Balsiger", "Smith", "Fischer", ];
+var surnames = ["Carter", "Taylor", "Grant", "Knight", "Shaw", "Mason", "Mann", "Burnett", "Kinglover", "Nailo", "Chandlerson", "Kenson", "Balsiger", "Smith", "Fischer", ];
 var races = ["Human", "Elf", "Dwarf", "Halfling", "Half-orc", "Half-elf", "Gnome"];
 var classes = ["Barbarian", "Fighter", "Rogue", "Cleric", "Druid", "Ranger", "Paladin", "Monk", "Wizard", "Sorcerer", "Bard"];
 
