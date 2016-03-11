@@ -1,4 +1,4 @@
-function Character(name, ability_scores, classname, race, sex, level, feats) {
+function Character(name, ability_scores, classname, race, sex, level, feats, hp) {
 	this.name = name;
 	this.scores = ability_scores;
 	this.classname = classname;
@@ -6,6 +6,7 @@ function Character(name, ability_scores, classname, race, sex, level, feats) {
 	this.sex = sex;
 	this.feats = feats;
 	this.level = level;
+	this.hitpoints = hp;
 }
 
 //Helper functions
@@ -17,6 +18,10 @@ var bonus = function(score){
 	}else{
 		return a;
 	}
+}
+
+var bonusint = function(score){
+	return Math.floor((score-10)/2);
 }
 
 function contains(a, obj) {
@@ -215,17 +220,61 @@ var myFeats = function(numFeats){
 	}
 	return cFeats;
 }
+
+var myHP = function(cclass, scores){
+	switch (classes.indexOf(cclass)){
+		case 0:
+			return Math.floor(Math.random()*6)+6+bonusint(scores[2]);
+			break;
+		case 1:
+			return Math.floor(Math.random()*10)+5+bonusint(scores[2]);
+			break;
+		case 2:
+			return Math.floor(Math.random()*3)+3+bonusint(scores[2]);
+			break;
+		case 3:
+			return Math.floor(Math.random()*4)+4+bonusint(scores[2]);
+			break;
+		case 4:
+			return Math.floor(Math.random()*4)+4+bonusint(scores[2]);
+			break;
+		case 5:
+			return Math.floor(Math.random()*4)+4+bonusint(scores[2]);
+			break;
+		case 6:
+			return Math.floor(Math.random()*5)+5+bonusint(scores[2]);
+			break;
+		case 7:
+			return Math.floor(Math.random()*4)+4+bonusint(scores[2]);
+			break;
+		case 8:
+			return Math.floor(Math.random()*2)+2+bonusint(scores[2]);
+			break;
+		case 9:
+			return Math.floor(Math.random()*2)+2+bonusint(scores[2]);
+			break;
+		case 10:
+			return Math.floor(Math.random()*3)+3+bonusint(scores[2]);
+			break;
+	}
+}
+
 /**/
 var charrace = myRace();
 var charsex = mySex();
 var myLevel = 1;
-var myCharacter = new Character(myName(charsex), modifyAbilitiesOnRace(charrace), charClass, charrace, charsex, myLevel, myFeats(getNumFeats(charClass, myLevel, charrace)));
-
+var abilscores = modifyAbilitiesOnRace(charrace);
+var hp = myHP(charClass, abilscores);
+while(hp<0){
+	var hp = myHP(charClass, abilscores);
+}
+var myCharacter = new Character(myName(charsex), abilscores, charClass, charrace, charsex, myLevel, myFeats(getNumFeats(charClass, myLevel, charrace)), hp);
 //JQUERY
 $(document).ready(function(){
 	$("#name_field").html(myCharacter.name);
 	$("#racesex_field").html(myCharacter.sex + " " + myCharacter.race);
 	$("#class_field").html(myCharacter.classname + " " + myCharacter.level);
+	$("#HPField").html("HP: " + myCharacter.hitpoints);
 	$("#Abilitiesstr").html("<td>Strength</td>" + "<td>" + myCharacter.scores[0] + "</td><td>" + bonus(myCharacter.scores[0]) + "</td>");
 	$("#Abilitiesagi").html("<td>Dexterity</td>" + "<td>" + myCharacter.scores[1] + "</td><td>" + bonus(myCharacter.scores[1]) + "</td>");
 	$("#Abilitiescon").html("<td>Constitution</td>" + "<td>" + myCharacter.scores[2] + "</td><td>" + bonus(myCharacter.scores[2]) + "</td>");
