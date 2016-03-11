@@ -196,26 +196,30 @@ var modifyAbilitiesOnRace = function(race){
 	}
 }
 //Feats will be added at some point in the future when I am less lazy
-var feats = [];
+var feats = ["acrobatic", "agile", "alertness", "animalAffinity", "lightArmorProficiency", "athletic"];
 
 var getNumFeats = function(Characterclass, level, race){
 	if (classes.indexOf(Characterclass) == 1){
-		return ((math.floor((5*level))/6)+2);
+		return ((Math.floor((5*level))/6)+2);
 	}else if(classes.indexOf(Characterclass)==8){
-		return math.floor(level/3)+math.floor(level/5)+1;
+		return Math.floor(level/3)+Math.floor(level/5)+1;
 	}else{
-		return math.floor(level/3);
+		return Math.floor(level/3)+1;
 	}
 }
 
-var myFeats = function(){
-
+var myFeats = function(numFeats){
+	var cFeats = [];
+	for(i=0;i<numFeats;i++){
+		cFeats.push(feats[Math.floor(Math.random()*feats.length)]);
+	}
+	return cFeats;
 }
 /**/
 var charrace = myRace();
 var charsex = mySex();
 var myLevel = 1;
-var myCharacter = new Character(myName(charsex), modifyAbilitiesOnRace(charrace), charClass, charrace, charsex, myLevel, myFeats());
+var myCharacter = new Character(myName(charsex), modifyAbilitiesOnRace(charrace), charClass, charrace, charsex, myLevel, myFeats(getNumFeats(charClass, myLevel, charrace)));
 
 //JQUERY
 $(document).ready(function(){
@@ -228,5 +232,7 @@ $(document).ready(function(){
 	$("#Abilitiesint").html("<td>Intelligence</td>" + "<td>" + myCharacter.scores[3] + "</td><td>" + bonus(myCharacter.scores[3]) + "</td>");
 	$("#Abilitieswis").html("<td>Wisdom</td>" + "<td>" + myCharacter.scores[4] + "</td><td>" + bonus(myCharacter.scores[4]) + "</td>");
 	$("#Abilitiescha").html("<td>Charisma</td>" + "<td>" + myCharacter.scores[5] + "</td><td>" + bonus(myCharacter.scores[5]) + "</td>");
-	$().html();
+	$("#featslist").html("<tr><td>" + window[myCharacter.feats[0]].name + ":</td><td>" + window[myCharacter.feats[0]].effect + "</td></tr>");
 });
+
+//alert(myCharacter.feats);
