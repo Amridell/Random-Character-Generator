@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 function Character(name, ability_scores, classname, race, sex, level, feats, hp) {
+=======
+function Character(name, ability_scores, classname, race, sex, level, feats) {
+>>>>>>> refs/remotes/origin/master
 	this.name = name;
 	this.scores = ability_scores;
 	this.classname = classname;
@@ -6,7 +10,10 @@ function Character(name, ability_scores, classname, race, sex, level, feats, hp)
 	this.sex = sex;
 	this.feats = feats;
 	this.level = level;
+<<<<<<< HEAD
 	this.hitpoints = hp;
+=======
+>>>>>>> refs/remotes/origin/master
 }
 
 //Helper functions
@@ -20,10 +27,13 @@ var bonus = function(score){
 	}
 }
 
+<<<<<<< HEAD
 var bonusint = function(score){
 	return Math.floor((score-10)/2);
 }
 
+=======
+>>>>>>> refs/remotes/origin/master
 function contains(a, obj) {
     for (var i = 0; i < a.length; i++){
         if (a[i] === obj) {
@@ -42,8 +52,13 @@ Array.prototype.swap = function (x,y) {
 
 //Databases
 var fnames = ["Emily", "Isabelle", "Samantha", "Alice", "Jessica", "Mary", "Kristen", "Kirsten", "Taylor"];
+<<<<<<< HEAD
 var mnames = ["William", "Finn", "Luke", "Robert", "Max", "Matthew", "Chandler", "Joseph", "Stephen", "Kenneth", "Christian", "Mason", "James", "Theodore", "Franklin", "Nicholas", "Oscar", "Oswald", "Samuel"];
 var surnames = ["Carter", "Taylor", "Grant", "Knight", "Shaw", "Mason", "Mann", "Burnett", "Kinglover", "Nailo", "Chandlerson", "Kenson", "Balsiger", "Smith", "Fischer", "The Rotund", "The Great", "The Hung"];
+=======
+var mnames = ["William", "Finn", "Luke", "Robert", "Max", "Matthew", "Chandler", "Joseph", "Stephen", "Kenneth", "Christian", "Mason", "James", "Theodore", "Franklin", "Nicholas"];
+var surnames = ["Carter", "Taylor", "Grant", "Knight", "Shaw", "Mason", "Mann", "Burnett", "Kingsolver", "Nailo", "Chandlerson", "Kenson", "Balsiger", "Smith", "Fischer", ];
+>>>>>>> refs/remotes/origin/master
 var races = ["Human", "Elf", "Dwarf", "Halfling", "Half-orc", "Half-elf", "Gnome"];
 var classes = ["Barbarian", "Fighter", "Rogue", "Cleric", "Druid", "Ranger", "Paladin", "Monk", "Wizard", "Sorcerer", "Bard"];
 
@@ -201,6 +216,7 @@ var modifyAbilitiesOnRace = function(race){
 	}
 }
 //Feats will be added at some point in the future when I am less lazy
+<<<<<<< HEAD
 var feats = ["acrobatic", "agile", "alertness", "animalAffinity", "lightArmorProficiency", "athletic"];
 
 var getNumFeats = function(Characterclass, level, race){
@@ -259,29 +275,59 @@ var myHP = function(cclass, scores){
 	}
 }
 
+=======
+var feats = [];
+
+var getNumFeats = function(Characterclass, level, race){
+	if (classes.indexOf(Characterclass) == 1){
+		return ((math.floor((5*level))/6)+2);
+	}else if(classes.indexOf(Characterclass)==8){
+		return math.floor(level/3)+math.floor(level/5)+1;
+	}else{
+		return math.floor(level/3);
+	}
+}
+
+var myFeats = function(){
+
+}
+>>>>>>> refs/remotes/origin/master
 /**/
 var charrace = myRace();
 var charsex = mySex();
 var myLevel = 1;
+<<<<<<< HEAD
 var abilscores = modifyAbilitiesOnRace(charrace);
 var hp = myHP(charClass, abilscores);
 while(hp<0){
 	var hp = myHP(charClass, abilscores);
 }
 var myCharacter = new Character(myName(charsex), abilscores, charClass, charrace, charsex, myLevel, myFeats(getNumFeats(charClass, myLevel, charrace)), hp);
+=======
+var myCharacter = new Character(myName(charsex), modifyAbilitiesOnRace(charrace), charClass, charrace, charsex, myLevel, myFeats());
+
+>>>>>>> refs/remotes/origin/master
 //JQUERY
 $(document).ready(function(){
 	$("#name_field").html(myCharacter.name);
 	$("#racesex_field").html(myCharacter.sex + " " + myCharacter.race);
 	$("#class_field").html(myCharacter.classname + " " + myCharacter.level);
+<<<<<<< HEAD
 	$("#HPField").html("HP: " + myCharacter.hitpoints);
+=======
+>>>>>>> refs/remotes/origin/master
 	$("#Abilitiesstr").html("<td>Strength</td>" + "<td>" + myCharacter.scores[0] + "</td><td>" + bonus(myCharacter.scores[0]) + "</td>");
 	$("#Abilitiesagi").html("<td>Dexterity</td>" + "<td>" + myCharacter.scores[1] + "</td><td>" + bonus(myCharacter.scores[1]) + "</td>");
 	$("#Abilitiescon").html("<td>Constitution</td>" + "<td>" + myCharacter.scores[2] + "</td><td>" + bonus(myCharacter.scores[2]) + "</td>");
 	$("#Abilitiesint").html("<td>Intelligence</td>" + "<td>" + myCharacter.scores[3] + "</td><td>" + bonus(myCharacter.scores[3]) + "</td>");
 	$("#Abilitieswis").html("<td>Wisdom</td>" + "<td>" + myCharacter.scores[4] + "</td><td>" + bonus(myCharacter.scores[4]) + "</td>");
 	$("#Abilitiescha").html("<td>Charisma</td>" + "<td>" + myCharacter.scores[5] + "</td><td>" + bonus(myCharacter.scores[5]) + "</td>");
+<<<<<<< HEAD
 	$("#featslist").html("<tr><td>" + window[myCharacter.feats[0]].name + ":</td><td>" + window[myCharacter.feats[0]].effect + "</td></tr>");
 });
 
 //alert(myCharacter.feats);
+=======
+	$().html();
+});
+>>>>>>> refs/remotes/origin/master
