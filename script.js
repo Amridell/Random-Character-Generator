@@ -51,7 +51,7 @@ var classes = ["Barbarian", "Fighter", "Rogue", "Cleric", "Druid", "Ranger", "Pa
 var myAlignment = function(cclass){
 	var lvc = ["Lawful", "Neutral", "Chaotic"];
 	var gve = ["Good", "Neutral", "Evil"];
-	if(classes.indexOf(cclass) != 0 && classes.indexOf(cclass) != 10 && classes.indexOf(cclass) != 7){
+	if(classes.indexOf(cclass) != 0 && classes.indexOf(cclass) != 10 && classes.indexOf(cclass) != 7 && classes.indexOf(cclass) != 6){
 		a = lvc[Math.floor(Math.random()*lvc.length)] + " " + gve[Math.floor(Math.random()*gve.length)];
 		if(a == "Neutral Neutral"){
 			return "Neutral";
@@ -60,6 +60,8 @@ var myAlignment = function(cclass){
 		}
 	}else if(classes.indexOf(cclass) == 7){
 		return lvc[0] + " " + gve[Math.floor(Math.random()*gve.length)];
+	}else if(classes.indexOf(cclass) == 6){
+		return "Lawful Good";
 	}else{
 		return lvc[2] + " " + gve[Math.floor(Math.random()*gve.length)];
 	}
