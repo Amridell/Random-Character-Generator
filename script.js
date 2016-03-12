@@ -1,4 +1,4 @@
-function Character(name, ability_scores, classname, race, sex, level, feats, hp) {
+function Character(name, ability_scores, classname, race, sex, level, feats, hp, alignment) {
 	this.name = name;
 	this.scores = ability_scores;
 	this.classname = classname;
@@ -7,6 +7,7 @@ function Character(name, ability_scores, classname, race, sex, level, feats, hp)
 	this.feats = feats;
 	this.level = level;
 	this.hitpoints = hp;
+	this.alignment = alignment;
 }
 
 //Helper functions
@@ -46,6 +47,23 @@ var mnames = ["William", "Finn", "Luke", "Robert", "Max", "Matthew", "Chandler",
 var surnames = ["Carter", "Taylor", "Grant", "Knight", "Shaw", "Mason", "Mann", "Burnett", "Kinglover", "Nailo", "Chandlerson", "Kenson", "Balsiger", "Smith", "Fischer", "The Rotund", "The Great", "The Hung"];
 var races = ["Human", "Elf", "Dwarf", "Halfling", "Half-orc", "Half-elf", "Gnome"];
 var classes = ["Barbarian", "Fighter", "Rogue", "Cleric", "Druid", "Ranger", "Paladin", "Monk", "Wizard", "Sorcerer", "Bard"];
+
+var myAlignment = function(cclass){
+	var lvc = ["Lawful", "Neutral", "Chaotic"];
+	var gve = ["Good", "Neutral", "Evil"];
+	if(classes.indexOf(cclass) != 0 && classes.indexOf(cclass) != 10 && classes.indexOf(cclass) != 7){
+		a = lvc[Math.floor(Math.random()*lvc.length)] + " " + gve[Math.floor(Math.random()*gve.length)];
+		if(a == "Neutral Neutral"){
+			return "Neutral";
+		}else{
+			return a;
+		}
+	}else if(classes.indexOf(cclass) == 7){
+		return lvc[0] + " " + gve[Math.floor(Math.random()*gve.length)];
+	}else{
+		return lvc[2] + " " + gve[Math.floor(Math.random()*gve.length)];
+	}
+}
 
 var mySex = function(){
 	var a = (Math.floor(Math.random()*2)+1);
@@ -273,11 +291,11 @@ var hp = myHP(charClass, abilscores);
 while(hp<0){
 	var hp = myHP(charClass, abilscores);
 }
-var myCharacter = new Character(myName(charsex), abilscores, charClass, charrace, charsex, myLevel, charfeats, hp);
+var myCharacter = new Character(myName(charsex), abilscores, charClass, charrace, charsex, myLevel, charfeats, hp, myAlignment(charClass));
 //JQUERY
 $(document).ready(function(){
 	$("#name_field").html(myCharacter.name);
-	$("#racesex_field").html(myCharacter.sex + " " + myCharacter.race);
+	$("#racesex_field").html(myCharacter.alignment + " " + myCharacter.sex + " " + myCharacter.race);
 	$("#class_field").html(myCharacter.classname + " " + myCharacter.level);
 	$("#HPField").html("HP: " + myCharacter.hitpoints);
 	$("#Abilitiesstr").html("<td>Strength</td>" + "<td>" + myCharacter.scores[0] + "</td><td>" + bonus(myCharacter.scores[0]) + "</td>");
