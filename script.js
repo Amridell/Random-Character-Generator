@@ -265,9 +265,9 @@ var charsex = mySex();
 var myLevel = 1;
 var abilscores = modifyAbilitiesOnRace(charrace);
 var hp = myHP(charClass, abilscores);
-while(hp<0){
+/*while(hp<0){
 	var hp = myHP(charClass, abilscores);
-}
+}*/
 var myCharacter = new Character(myName(charsex), abilscores, charClass, charrace, charsex, myLevel, myFeats(getNumFeats(charClass, myLevel, charrace)), hp);
 //JQUERY
 $(document).ready(function(){
