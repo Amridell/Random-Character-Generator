@@ -223,7 +223,7 @@ var myFeats = function(numFeats){
 
 var myHP = function(cclass, scores){
 	var a = 0;
-	if(contains("toughness", charfeats)){
+	if(contains(charfeats, "toughness")){
 		a = a+3;
 	}
 	switch (classes.indexOf(cclass)){
