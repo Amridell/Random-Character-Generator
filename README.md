@@ -14,6 +14,6 @@ Hit Points
 
 Changes ability scores based on class. A wizard, for instance, always puts his highest into intelligence, while a fighter automatically decides between strength or dexterity, producing a wide variety of possible builds.
 
-# Current known bugs:
+# Current known bugs
 Barbarian sometimes puts highest/second highest ability into charisma.
 More of a lack of feature: haven't added prerequisite checking for feats yet.
