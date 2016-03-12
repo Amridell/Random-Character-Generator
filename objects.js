@@ -90,4 +90,13 @@ var athletic = new feat(
   "+2 on Handle Animal and Ride checks."
 );
 
+var Toughness = new feat(
+  function(){
+      return true;
+  },
+  "Toughness",
+  "+3 hitpoints."
+);
+
+
 //alert(fnames);
