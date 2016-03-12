@@ -24,7 +24,7 @@ var bonusint = function(score){
 	return Math.floor((score-10)/2);
 }
 
-function contains(a, obj) {
+var contains =function(a, obj) {
     for (var i = 0; i < a.length; i++){
         if (a[i] === obj) {
             return true;
@@ -201,7 +201,7 @@ var modifyAbilitiesOnRace = function(race){
 	}
 }
 //Feats will be added at some point in the future when I am less lazy
-var feats = ["acrobatic", "agile", "alertness", "animalAffinity", "lightArmorProficiency", "athletic"];
+var feats = ["acrobatic", "agile", "alertness", "animalAffinity", "athletic", "toughness"];
 
 var getNumFeats = function(Characterclass, level, race){
 	if (classes.indexOf(Characterclass) == 1){
@@ -222,39 +222,43 @@ var myFeats = function(numFeats){
 }
 
 var myHP = function(cclass, scores){
+	var a = 0;
+	if(contains("toughness", charfeats)){
+		a = a+3;
+	}
 	switch (classes.indexOf(cclass)){
 		case 0:
-			return Math.floor(Math.random()*6)+6+bonusint(scores[2]);
+			return a + Math.floor(Math.random()*6)+6+bonusint(scores[2]);
 			break;
 		case 1:
-			return Math.floor(Math.random()*10)+5+bonusint(scores[2]);
+			return a + Math.floor(Math.random()*10)+5+bonusint(scores[2]);
 			break;
 		case 2:
-			return Math.floor(Math.random()*3)+3+bonusint(scores[2]);
+			return a + Math.floor(Math.random()*3)+3+bonusint(scores[2]);
 			break;
 		case 3:
-			return Math.floor(Math.random()*4)+4+bonusint(scores[2]);
+			return a + Math.floor(Math.random()*4)+4+bonusint(scores[2]);
 			break;
 		case 4:
-			return Math.floor(Math.random()*4)+4+bonusint(scores[2]);
+			return a + Math.floor(Math.random()*4)+4+bonusint(scores[2]);
 			break;
 		case 5:
-			return Math.floor(Math.random()*4)+4+bonusint(scores[2]);
+			return a + Math.floor(Math.random()*4)+4+bonusint(scores[2]);
 			break;
 		case 6:
-			return Math.floor(Math.random()*5)+5+bonusint(scores[2]);
+			return a + Math.floor(Math.random()*5)+5+bonusint(scores[2]);
 			break;
 		case 7:
-			return Math.floor(Math.random()*4)+4+bonusint(scores[2]);
+			return a + Math.floor(Math.random()*4)+4+bonusint(scores[2]);
 			break;
 		case 8:
-			return Math.floor(Math.random()*2)+2+bonusint(scores[2]);
+			return a + Math.floor(Math.random()*2)+2+bonusint(scores[2]);
 			break;
 		case 9:
-			return Math.floor(Math.random()*2)+2+bonusint(scores[2]);
+			return a + Math.floor(Math.random()*2)+2+bonusint(scores[2]);
 			break;
 		case 10:
-			return Math.floor(Math.random()*3)+3+bonusint(scores[2]);
+			return a + Math.floor(Math.random()*3)+3+bonusint(scores[2]);
 			break;
 	}
 }
@@ -264,11 +268,12 @@ var charrace = myRace();
 var charsex = mySex();
 var myLevel = 1;
 var abilscores = modifyAbilitiesOnRace(charrace);
+charfeats = myFeats(getNumFeats(charClass, myLevel, charrace));
 var hp = myHP(charClass, abilscores);
 while(hp<0){
 	var hp = myHP(charClass, abilscores);
 }
-var myCharacter = new Character(myName(charsex), abilscores, charClass, charrace, charsex, myLevel, myFeats(getNumFeats(charClass, myLevel, charrace)), hp);
+var myCharacter = new Character(myName(charsex), abilscores, charClass, charrace, charsex, myLevel, charfeats, hp);
 //JQUERY
 $(document).ready(function(){
 	$("#name_field").html(myCharacter.name);
