@@ -231,7 +231,7 @@ var myHP = function(cclass, scores){
 			return a + Math.floor(Math.random()*6)+6+bonusint(scores[2]);
 			break;
 		case 1:
-			return a + Math.floor(Math.random()*10)+5+bonusint(scores[2]);
+			return a + Math.floor(Math.random()*5)+5+bonusint(scores[2]);
 			break;
 		case 2:
 			return a + Math.floor(Math.random()*3)+3+bonusint(scores[2]);
@@ -286,7 +286,12 @@ $(document).ready(function(){
 	$("#Abilitiesint").html("<td>Intelligence</td>" + "<td>" + myCharacter.scores[3] + "</td><td>" + bonus(myCharacter.scores[3]) + "</td>");
 	$("#Abilitieswis").html("<td>Wisdom</td>" + "<td>" + myCharacter.scores[4] + "</td><td>" + bonus(myCharacter.scores[4]) + "</td>");
 	$("#Abilitiescha").html("<td>Charisma</td>" + "<td>" + myCharacter.scores[5] + "</td><td>" + bonus(myCharacter.scores[5]) + "</td>");
-	$("#featslist").html("<tr><td>" + window[myCharacter.feats[0]].name + ":</td><td>" + window[myCharacter.feats[0]].effect + "</td></tr>");
+	//$("#featslist").html("<tr><td>" + window[myCharacter.feats[0]].name + ":</td><td>" + window[myCharacter.feats[0]].effect + "</td></tr>");
+	var newHTML = [];
+	$.each(myCharacter.feats, function(index, value) {
+    newHTML.push("<tr><td>" + window[value].name + ":</td><td>" + window[value].effect + "</td></tr>");
+	});
+	$("#featslist").html(newHTML.join(""));
 });
 
 //alert(myCharacter.feats);
