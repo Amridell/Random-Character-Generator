@@ -1,8 +1,9 @@
 #forkme{
-  position: fixed;
-  top: 0;
-  left: 43.5%;
+  display: block;
+  width: 25%;
+  margin: auto;
   color: #36B1D9;
+  text-align: center;
 }
 
 a:link {
@@ -27,8 +28,9 @@ a:active{
 
 #holder{
   display: block;
-  margin-left: 40%;
-  margin-top: 15%;
+  width: 25%;
+  margin: auto;
+  margin-top: 14%;
   background-color: #36B1D9;
   width: 15%;
   color: white;
@@ -39,3 +41,24 @@ a:active{
 #name_field{
   font-size: 20pt;
 }
+/*
+#buttonholder{
+  display: block;
+  width: 25%;
+  margin: auto;
+}
+
+#generate{
+  display: block;
+  width: 25%;
+  margin: auto;
+  margin-top: 3%;
+  background-color: #36B1D9;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  box-shadow: 0 0 5px 2px hsla(228, 90%, 0%, 0.35);
+}
+*/
