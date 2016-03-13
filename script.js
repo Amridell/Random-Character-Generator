@@ -298,7 +298,35 @@ while(hp<0){
 }
 var myCharacter = new Character(myName(charsex), abilscores, charClass, charrace, charsex, myLevel, charfeats, hp, myAlignment(charClass));
 //JQUERY
-$(document).ready(function(){
+$("document").ready(function(){
+	$("#name_field").html(myCharacter.name);
+	$("#racesex_field").html(myCharacter.alignment + " " + myCharacter.sex + " " + myCharacter.race);
+	$("#class_field").html(myCharacter.classname + " " + myCharacter.level);
+	$("#HPField").html("HP: " + myCharacter.hitpoints);
+	$("#Abilitiesstr").html("<td>Strength</td>" + "<td>" + myCharacter.scores[0] + "</td><td>" + bonus(myCharacter.scores[0]) + "</td>");
+	$("#Abilitiesagi").html("<td>Dexterity</td>" + "<td>" + myCharacter.scores[1] + "</td><td>" + bonus(myCharacter.scores[1]) + "</td>");
+	$("#Abilitiescon").html("<td>Constitution</td>" + "<td>" + myCharacter.scores[2] + "</td><td>" + bonus(myCharacter.scores[2]) + "</td>");
+	$("#Abilitiesint").html("<td>Intelligence</td>" + "<td>" + myCharacter.scores[3] + "</td><td>" + bonus(myCharacter.scores[3]) + "</td>");
+	$("#Abilitieswis").html("<td>Wisdom</td>" + "<td>" + myCharacter.scores[4] + "</td><td>" + bonus(myCharacter.scores[4]) + "</td>");
+	$("#Abilitiescha").html("<td>Charisma</td>" + "<td>" + myCharacter.scores[5] + "</td><td>" + bonus(myCharacter.scores[5]) + "</td>");
+	//$("#featslist").html("<tr><td>" + window[myCharacter.feats[0]].name + ":</td><td>" + window[myCharacter.feats[0]].effect + "</td></tr>");
+	var newHTML = [];
+	$.each(myCharacter.feats, function(index, value) {
+		newHTML.push("<tr><td>" + window[value].name + ":</td><td>" + window[value].effect + "</td></tr>");
+	});
+	$("#featslist").html(newHTML.join(""));
+
+$("#buttonholder").on('click', '#generate', function () {
+	var charrace = myRace();
+	var charsex = mySex();
+	var myLevel = 1;
+	var abilscores = modifyAbilitiesOnRace(charrace);
+	charfeats = myFeats(getNumFeats(charClass, myLevel, charrace));
+	var hp = myHP(charClass, abilscores);
+	while(hp<0){
+		var hp = myHP(charClass, abilscores);
+	}
+	var myCharacter = new Character(myName(charsex), abilscores, charClass, charrace, charsex, myLevel, charfeats, hp, myAlignment(charClass));
 	$("#name_field").html(myCharacter.name);
 	$("#racesex_field").html(myCharacter.alignment + " " + myCharacter.sex + " " + myCharacter.race);
 	$("#class_field").html(myCharacter.classname + " " + myCharacter.level);
@@ -316,5 +344,4 @@ $(document).ready(function(){
 	});
 	$("#featslist").html(newHTML.join(""));
 });
-
-//alert(myCharacter.feats);
+});
