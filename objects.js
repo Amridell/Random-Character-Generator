@@ -98,5 +98,14 @@ var toughness = new feat(
   "+3 hitpoints."
 );
 
+var weaponFocus = new feat(
+  function(character){
+      if(character.ability_scores[0] >= 13){
+        return true;
+      }else{return false;}
+  },
+  "Weapon Focus",
+  "+1 to hit rolls with one weapon."
+);
 
 //alert(fnames);

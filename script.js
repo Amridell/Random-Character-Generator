@@ -221,7 +221,7 @@ var modifyAbilitiesOnRace = function(race){
 	}
 }
 //Feats will be added at some point in the future when I am less lazy
-var feats = ["acrobatic", "agile", "alertness", "animalAffinity", "athletic", "toughness"];
+var feats = ["acrobatic", "agile", "alertness", "animalAffinity", "athletic", "toughness", "weaponFocus"];
 
 var getNumFeats = function(Characterclass, level, race){
 	if (classes.indexOf(Characterclass) == 1){
@@ -236,7 +236,10 @@ var getNumFeats = function(Characterclass, level, race){
 var myFeats = function(numFeats){
 	var cFeats = [];
 	for(i=0;i<numFeats;i++){
-		cFeats.push(feats[Math.floor(Math.random()*feats.length)]);
+		var consideredFeat = feats[Math.floor(Math.random()*feats.length)];
+		if(!contains(cFeats, consideredFeat)){
+			cFeats.push(consideredFeat);
+		}
 	}
 	return cFeats;
 }

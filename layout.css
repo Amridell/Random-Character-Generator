@@ -1,0 +1,41 @@
+#forkme{
+  position: fixed;
+  top: 0;
+  left: 43.5%;
+  color: #36B1D9;
+}
+
+a:link {
+    text-decoration: none;
+    color: #36B1D9;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #1E5669;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #36B1D9;
+}
+
+a:active{
+  text-decoration: none;
+  color: #36B1D9;
+}
+
+#holder{
+  display: block;
+  margin-left: 40%;
+  margin-top: 15%;
+  background-color: #36B1D9;
+  width: 15%;
+  color: white;
+  padding: 1%;
+  box-shadow: 0 0 5px 2px hsla(228, 90%, 0%, 0.35);
+}
+
+#name_field{
+  font-size: 20pt;
+}
