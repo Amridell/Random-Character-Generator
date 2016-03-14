@@ -28,14 +28,19 @@ a:active{
 
 #holder{
   display: block;
-  width: 25%;
-  margin: auto;
-  margin-top: 14%;
-  background-color: #36B1D9;
   width: 15%;
+  margin: auto;
+  margin-top: 10%;
+  background-color: #36B1D9;
   color: white;
   padding: 1%;
   box-shadow: 0 0 5px 2px hsla(228, 90%, 0%, 0.35);
+}
+
+#portrait{
+  display: block;
+  width: 90%;
+  margin: auto;
 }
 
 #name_field{
