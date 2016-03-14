@@ -8,6 +8,8 @@ function Character(name, ability_scores, classname, race, sex, level, feats, hp,
 	this.level = level;
 	this.hitpoints = hp;
 	this.alignment = alignment;
+	if (this.classname == "Wizard")
+		this.classname = generateSpecialtyOrGod(this.classname, this.alignment);
 }
 
 //Helper functions
