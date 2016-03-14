@@ -83,4 +83,4 @@ var portrait = function(cclass, crace, csex, calign){
     default:
       return "images/default_image.png";
   }
-}
+};
