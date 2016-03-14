@@ -17,7 +17,7 @@ var portrait = function(cclass, crace, csex, calign){
        if(csex == "Female"){
          return "images/fighter_female.png";
        }else{
-         var mfighters = ["images/fighter_male.png", "images/cleric_heronius_male.png", "images/male_fighter.png"];
+         var mfighters = ["images/fighter_male.png", "images/cleric_heronius_male.png", "images/male_fighter.png", "images/dwarf_fighterpng.png"];
          return mfighters[Math.floor(Math.random()*2)];
        }
        break;
@@ -44,7 +44,7 @@ var portrait = function(cclass, crace, csex, calign){
       }
       break;
     case 6: //think I got a paladin somewhere here...
-      var mpals = ["images/cleric_heronius_male.png", ];
+      var mpals = ["images/cleric_heronius_male.png", "images/dwarf_fighterpng.png"];
       var fpals = ["images/fighter_female.png"];
       if(csex == "Female"){
         return fpals[Math.floor(Math.random()*fpals.length)];
