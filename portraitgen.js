@@ -1,24 +1,14 @@
 var portrait = function(cclass, crace, csex, calign){
   switch (cclass) {
-    case 0: //barbarian
-      switch (Math.floor(Math.random()*2)) {
-        case "Barbarian":
-          return "images/barbarian1.png";
-          break;
-        case 1:
-          return "images/barbarian2.png";
-          break;
-        case 2:
-            return "images/barbarian3.png";
-            break;
-      }
-      break;
+    case "Barbarian": //barbarian
+      var barbs = ["images/barbarian1.png", "images/barbarian2.png", "images/barbarian3.png"];
+      return barbs[Math.floor(Math.random()*barbs.length)];
     case "Fighter": //Fighter
        if(csex == "Female"){
          return "images/fighter_female.png";
        }else{
          var mfighters = ["images/fighter_male.png", "images/cleric_heronius_male.png", "images/male_fighter.png", "images/dwarf_fighterpng.png"];
-         return mfighters[Math.floor(Math.random()*2)];
+         return mfighters[Math.floor(Math.random()*mfighters.length)];
        }
        break;
     case "Rogue": //rogue
