@@ -111,7 +111,7 @@ var finalAbilities = function(){
 	var highest = myAbilities.indexOf(Math.max(...myAbilities)); //Position in abilities array of highest value
 	switch(classes.indexOf(charClass)){
 		case 0: //Barbarian: Prioritize strength, con, dex. Mental abilities randomized among lowest.
-			var a = (Math.floor(Math.random()*3)+1);
+			var a = (Math.floor(Math.random()*2)+1);
 			switch(a){
 				case 1:
 					myAbilities = myAbilities.swap(highest, 0);

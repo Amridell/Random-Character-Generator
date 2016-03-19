@@ -24,4 +24,4 @@ Hit Points
 Changes ability scores based on class. A wizard, for instance, always puts his highest into intelligence, while a fighter automatically decides between strength or dexterity, producing a wide variety of possible builds.
 
 # Current known bugs
-Barbarians far too sexy. 
+Bad code style, not really asynchronous enough.
