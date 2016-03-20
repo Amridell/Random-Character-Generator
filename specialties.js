@@ -9,7 +9,7 @@ var specialists = ["Abjurer", "Conjurer", "Seer", "Enchanter", "Evoker", "Illusi
 //var pantheon = ["Wee-Jas", "Tritherion", "Pholtus", "Myhriss"];
 
 var generateSpecialtyOrGod = function(cclass, calign){
-  if(Math.floor(Math.random()*2)+1){
+  if(Math.floor(Math.random()*2)+1 == 1){
       return specialists[Math.floor(Math.random()*specialists.length)];
   }else{
     return "Wizard";
@@ -24,5 +24,5 @@ var generateBannedSchools = function(specialty){
   while(bannedSchoolb == bannedSchoola){
     bannedSchoolb = schools[Math.floor(Math.random()*schools.length)];
   }
-  return bannedSchoola + ", " + bannedSchoolb;
+  return "(Banned Schools: " + bannedSchoola + ", " + bannedSchoolb + ")";
 }

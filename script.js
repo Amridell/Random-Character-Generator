@@ -8,8 +8,13 @@ function Character(name, ability_scores, classname, race, sex, level, feats, hp,
 	this.level = level;
 	this.hitpoints = hp;
 	this.alignment = alignment;
-	if (this.classname == "Wizard")
+	this.bannedSchools = "";
+	if (this.classname == "Wizard"){
 		this.classname = generateSpecialtyOrGod(this.classname, this.alignment);
+		if(this.classname != "Wizard"){
+			this.bannedSchools = generateBannedSchools(this.classname);
+		}
+	}
 }
 
 //Helper functions
@@ -303,7 +308,7 @@ var myCharacter = new Character(myName(charsex), abilscores, charClass, charrace
 $("document").ready(function(){
 	$("#name_field").html(myCharacter.name);
 	$("#racesex_field").html(myCharacter.alignment + " " + myCharacter.sex + " " + myCharacter.race);
-	$("#class_field").html(myCharacter.classname + " " + myCharacter.level);
+	$("#class_field").html(myCharacter.classname + " " + myCharacter.bannedSchools + " " + myCharacter.level);
 	$("#HPField").html("HP: " + myCharacter.hitpoints);
 	$("#Abilitiesstr").html("<td>Strength</td>" + "<td>" + myCharacter.scores[0] + "</td><td>" + bonus(myCharacter.scores[0]) + "</td>");
 	$("#Abilitiesagi").html("<td>Dexterity</td>" + "<td>" + myCharacter.scores[1] + "</td><td>" + bonus(myCharacter.scores[1]) + "</td>");
