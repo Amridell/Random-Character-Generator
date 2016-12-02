@@ -1,5 +1,5 @@
 # Use it here
-https://amridell.github.io/Random-Character-Generator/
+https://ogkloo.github.io/Random-Character-Generator/
 
 # Random Character Generator
 An extremely simple random D&amp;D 3.5 character generator
