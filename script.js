@@ -306,7 +306,6 @@ while(hp<0){
 var myCharacter = new Character(myName(charsex), abilscores, charClass, charrace, charsex, myLevel, charfeats, hp, myAlignment(charClass));
 //JQUERY
 $("document").ready(function(){
-	$("holder").draggable();
 	$("#name_field").html(myCharacter.name);
 	$("#racesex_field").html(myCharacter.alignment + " " + myCharacter.sex + " " + myCharacter.race);
 	$("#class_field").html(myCharacter.classname + " " + myCharacter.bannedSchools + " " + myCharacter.level);
