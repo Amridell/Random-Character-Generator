@@ -91,13 +91,6 @@ var myName = function(sex) {
 	}
 };
 
-//generating ability scores
-var myAbilities = [];
-while(myAbilities.length < 6){
-  var randomnumber=Math.floor((Math.random()*10)+8);
-  var found=false;
-  myAbilities[myAbilities.length]=randomnumber;
-}
 //myAbilities = myAbilities.sort(function(a, b){return b-a});
 //generating ability scores
 
@@ -111,6 +104,13 @@ var myRace = function(){
 //redoing ability scores to match class
 var charClass = myClass();
 var finalAbilities = function(){
+	//generating ability scores
+	var myAbilities = [];
+	while(myAbilities.length < 6){
+  		var randomnumber=Math.floor((Math.random()*10)+8);
+  		var found=false;
+  		myAbilities[myAbilities.length]=randomnumber;
+	}
 	var sortAbilities = myAbilities.concat();
 	sortAbilities.sort(function(a, b){return b-a});
 	var highest = myAbilities.indexOf(Math.max(...myAbilities)); //Position in abilities array of highest value
@@ -189,9 +189,7 @@ var finalAbilities = function(){
 	}
 };
 
-myAbilities = finalAbilities();
-
-var modifyAbilitiesOnRace = function(race){
+var modifyAbilitiesOnRace = function(race, myAbilities){
 	switch(races.indexOf(race)){
 		case 0:	//Human
 			return myAbilities;
@@ -294,16 +292,19 @@ var myHP = function(cclass, scores){
 }
 
 /**/
-var charrace = myRace();
-var charsex = mySex();
-var myLevel = 1;
-var abilscores = modifyAbilitiesOnRace(charrace);
-charfeats = myFeats(getNumFeats(charClass, myLevel, charrace));
-var hp = myHP(charClass, abilscores);
-while(hp<0){
+var mkCharacter = function(){
+	var charrace = myRace();
+	var charsex = mySex();
+	var myLevel = 1;
+	var abilscores = modifyAbilitiesOnRace(charrace, finalAbilities());
+	charfeats = myFeats(getNumFeats(charClass, myLevel, charrace));
 	var hp = myHP(charClass, abilscores);
+	while(hp<0){
+		var hp = myHP(charClass, abilscores);
+	}
+	return new Character(myName(charsex), abilscores, charClass, charrace, charsex, myLevel, charfeats, hp, myAlignment(charClass));
 }
-var myCharacter = new Character(myName(charsex), abilscores, charClass, charrace, charsex, myLevel, charfeats, hp, myAlignment(charClass));
+var myCharacter = mkCharacter();
 //JQUERY
 $("document").ready(function(){
 	$("#name_field").html(myCharacter.name);
